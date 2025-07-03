@@ -1,0 +1,8 @@
+{
+  "careers": [
+    { "id": 1, "title": "senior dev", "salary": 50000, "location": "london, uk" },
+    { "id": 2, "title": "tailor", "salary": 54000, "location": "birmingham, uk" },
+    { "id": 3, "title": "graphic designer", "salary": 50000, "location": "london, uk" },
+    { "id": 4, "title": "doctor", "salary": 70000, "location": "scott, uk" }
+  ]
+}

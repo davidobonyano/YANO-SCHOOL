@@ -1,0 +1,11 @@
+import { NavLink } from "react-router-dom";
+function Aboutlayout() {
+  return (
+    <div className="Aboutlayout bg-gray-100 p-6">
+      <h1 className="text-2xl font-bold mb-4 text-center  text-gray-700">About Yano School</h1>
+      <p>Yano school has been paving the way as a leading <span className="font-bold text-red-400">institution</span> in innovative education. boasting multiple branches across Lagos State. Our goal is to <span className="font-bold text-red-400">provide hope</span> through education and to <span className="font-bold text-red-400">instill strong character values</span> that will guide our students well in to the future.</p>
+      <NavLink to="about" className="flex  transition duration-300 items-center text-black w-fit justify-center border mt-4 border-red-400  hover:border-0 rounded-3xl px-6 py-3 "> Learn More About Us <div className="inline-block ml-2">→</div> </NavLink>
+    </div>
+  );
+}
+export default Aboutlayout; 
