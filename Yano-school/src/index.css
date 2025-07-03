@@ -1,7 +1,18 @@
 @import "tailwindcss";
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
 
 body, html, #root {
   margin: 0;
   padding: 0;
   height: 100%;
+}
+
+
+@layer utilities {
+  .hero {
+    background-image: url('/images/hero.jpg');
+  }
 }
