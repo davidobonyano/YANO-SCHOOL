@@ -23,7 +23,10 @@ const router = createBrowserRouter(
     
     <Route path="*" element={<Notfound/>}></Route>
       </Route>
-   )
+   ),
+    {
+    basename: "/YANO-SCHOOL",
+  }
 )
 function App() {
    return ( 
