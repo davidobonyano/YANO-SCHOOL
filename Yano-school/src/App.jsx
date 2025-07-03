@@ -1,38 +1,36 @@
-import { createBrowserRouter,createRoutesFromElements,RouterProvider, Route,} from "react-router-dom";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  RouterProvider,
+  Route,
+} from "react-router-dom";
 
-//Components
+// Components
 import Home from "./Components/Home";
 import About from "./Components/About";
 
-
-
-//Pages
+// Pages
 import Notfound from "./pages/Notfound";
 
-//layout
+// Layout
 import Rootlayout from "./Layout/Rootlayout";
 
 
-
-
 const router = createBrowserRouter(
-   createRoutesFromElements(
-    <Route path="/" element={<Rootlayout/>}>
-    <Route index element={<Home/>}></Route>
-    <Route path="about" element={<About/>}></Route>
-    
-    <Route path="*" element={<Notfound/>}></Route>
-      </Route>
-   ),
-    {
+  createRoutesFromElements(
+    <Route path="/" element={<Rootlayout />}>
+      <Route index element={<Home />} />
+      <Route path="about" element={<About />} />
+      <Route path="*" element={<Notfound />} />
+    </Route>
+  ),
+  {
     basename: "/YANO-SCHOOL",
   }
-)
+);
+
 function App() {
-   return ( 
-    <RouterProvider router={router}></RouterProvider>
-   
-   );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
