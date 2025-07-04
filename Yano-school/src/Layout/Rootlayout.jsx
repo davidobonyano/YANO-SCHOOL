@@ -14,6 +14,7 @@ import {
   faSun,
   faMoon,
 } from "@fortawesome/free-solid-svg-icons";
+import Footer from "../Components/Footer";
 
 function Rootlayout() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -127,7 +128,7 @@ function Rootlayout() {
         <header
             className={`text-sm py-2 px-4 flex justify-between items-center flex-wrap z-20 transition-all duration-300 ${
               isHomePage
-                ? "absolute top-0 left-0 w-full text-gray-800 bg-transparent"
+                ? "absolute top-0 left-0 w-full text-gray-800 bg-transparent "
                 : "bg-gray-100 text-gray-600 dark:bg-transparent dark:text-white"
             }`}
            >
@@ -211,7 +212,7 @@ function Rootlayout() {
         {/* Mobile Header */}
       <div className={`md:hidden flex justify-between items-center px-4 py-3 shadow-md transition-all duration-300 ${
         isHomePage
-          ? "absolute top-10 w-[70%] left-1/2 transform -translate-x-1/2 bg-white z-30 rounded-xl shadow-md"
+          ? "absolute top-16 w-[70%] left-1/2 transform -translate-x-1/2 bg-white z-30 rounded-xl shadow-md"
           : "bg-lightmode-header dark:bg-darkmode-header"
       }`}>
         <NavLink to="/">
@@ -238,8 +239,8 @@ function Rootlayout() {
         </main>
 
         {/* Footer */}
-        <footer className="bg-gray-100 text-center text-sm text-gray-600 py-4">
-          © {new Date().getFullYear()} Yano School. All rights reserved.
+        <footer >
+         <Footer />
         </footer>
       </div>
     </div>

@@ -61,7 +61,7 @@ function Testimonialslider() {
 
   return (
     <section
-      className="relative w-full overflow-hidden bg-gray-100 py-12"
+      className="relative w-full overflow-hidden py-12"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
