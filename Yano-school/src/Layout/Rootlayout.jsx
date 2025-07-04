@@ -11,40 +11,50 @@ import {
   faMapMarkerAlt,
   faBars,
   faTimes,
+  faSun,
+  faMoon,
 } from "@fortawesome/free-solid-svg-icons";
 
 function Rootlayout() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [touchStartX, setTouchStartX] = useState(0);
   const [touchEndX, setTouchEndX] = useState(0);
+  const [darkMode, setDarkMode] = useState(false);
   const sidebarRef = useRef();
 
   const navLinks = [
     { path: "/", label: "Home", icon: faHome },
     { path: "/about", label: "About", icon: faInfoCircle },
-    { path: "/Programs", label: "Programs", icon: faGraduationCap },
-    { path: "/Admissions", label: "Admissions", icon: faUserPlus },
+    { path: "/programs", label: "Programs", icon: faGraduationCap },
+    { path: "/admissions", label: "Admissions", icon: faUserPlus },
     { path: "/contact", label: "Contact", icon: faEnvelope },
   ];
 
-  // Disable scroll when menu is open
+  useEffect(() => {
+    const storedMode = localStorage.getItem("darkMode") === "true";
+    setDarkMode(storedMode);
+  }, []);
+
+  useEffect(() => {
+    document.body.classList.toggle("dark-mode", darkMode);
+    localStorage.setItem("darkMode", darkMode);
+  }, [darkMode]);
+
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "auto";
   }, [menuOpen]);
 
-  // Handle touch for drag-to-close
   const handleTouchStart = (e) => setTouchStartX(e.touches[0].clientX);
   const handleTouchMove = (e) => setTouchEndX(e.touches[0].clientX);
   const handleTouchEnd = () => {
-    if (touchStartX - touchEndX > 50) setMenuOpen(false); // Swipe left to close
+    if (touchStartX - touchEndX > 50) setMenuOpen(false);
   };
 
   return (
     <div className="relative font-sans text-gray-700 min-h-screen overflow-x-hidden">
-      {/* Background Dimmer with Blur */}
       {menuOpen && (
         <div
-          className="fixed inset-0 bg-black/30  z-40 md:hidden"
+          className="fixed inset-0 bg-black/30 z-40 md:hidden"
           onClick={() => setMenuOpen(false)}
         ></div>
       )}
@@ -52,14 +62,13 @@ function Rootlayout() {
       {/* Sidebar */}
       <div
         ref={sidebarRef}
-        className={`fixed top-0 right-0 h-full w-[70%] bg-white z-50 p-6 transition-transform duration-300 ease-in-out md:hidden ${
+        className={`fixed top-0 right-0 h-full w-[70%] bg-white dark-sidebar z-50 p-6 transition-transform duration-300 ease-in-out md:hidden ${
           menuOpen ? "translate-x-0" : "translate-x-full"
         }`}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-        {/* Close Button */}
         <button
           onClick={() => setMenuOpen(false)}
           className="absolute top-4 right-4 text-xl z-50"
@@ -87,20 +96,33 @@ function Rootlayout() {
             </NavLink>
           ))}
         </nav>
+
+        {/* Dark Mode Toggle - Mobile */}
+        <button
+          onClick={() => setDarkMode(!darkMode)}
+          className={`mt-8 self-start transition-colors duration-300 w-10 h-10 flex items-center justify-center 
+            ${darkMode 
+              ? "bg-white text-black border border-gray-400 rounded-full" 
+              : "bg-gray-200 text-blue-900 rounded-full border border-transparent"
+            }`}
+          aria-label="Toggle Dark Mode"
+        >
+          <FontAwesomeIcon icon={darkMode ? faSun : faMoon} />
+        </button>
       </div>
 
-      {/* Page content that transforms when sidebar is open */}
+      {/* Main Page Content */}
       <div
         className={`transition-transform duration-500 ease-in-out ${
           menuOpen ? "-translate-x-[70%] scale-[0.7] rounded-lg overflow-hidden" : ""
         }`}
       >
-        {/* Contact Header (visible on all screens) */}
+        {/* Contact Header */}
         <header className="bg-gray-100 text-sm text-gray-600 py-2 px-4 flex justify-between items-center flex-wrap">
           <div className="flex flex-wrap gap-4 items-center">
             <span className="flex items-center gap-2">
               <FontAwesomeIcon icon={faPhone} />
-              +234 456 078 890
+              +234 90 355 26 146
             </span>
             <span className="flex items-center gap-2">
               <FontAwesomeIcon icon={faEnvelope} />
@@ -108,23 +130,27 @@ function Rootlayout() {
             </span>
             <span className="flex items-center gap-2">
               <FontAwesomeIcon icon={faMapMarkerAlt} />
-              Ikorodu, Lagos
+              Ikorodu, Lagos.
             </span>
           </div>
         </header>
 
-        {/* Top NavBar (Large Screens) */}
-        <nav className="bg-white shadow-md py-4 px-6 hidden md:flex justify-between items-center">
-          <h1 className="text-blue-900 font-bold text-2xl">Yano School</h1>
-          <div className="flex space-x-6 font-medium">
+        {/* Desktop Top Nav */}
+        <nav className="bg-white dark:bg-gray-800 shadow-md py-4 px-6 hidden md:flex justify-between items-center">
+          <NavLink to="/">
+            <h1 className={`font-bold text-2xl ${darkMode ? "text-white" : "text-blue-900"}`}>
+              Yano School
+            </h1>
+          </NavLink>
+          <div className="flex space-x-6 font-medium items-center">
             {navLinks.map(({ path, label }) => (
               <NavLink
                 key={path}
                 to={path}
                 className={({ isActive }) =>
                   `relative group transition-all duration-200 pb-1 ${
-                    isActive ? "text-blue-900 font-semibold" : "text-gray-700"
-                  } hover:text-blue-700`
+                    isActive ? "text-blue-900 font-semibold" : "text-gray-700 dark:text-gray-300"
+                  } hover:text-blue-700 dark:hover:text-white`
                 }
               >
                 {({ isActive }) => (
@@ -139,16 +165,33 @@ function Rootlayout() {
                 )}
               </NavLink>
             ))}
+
+            {/* Dark Mode Toggle - Desktop */}
+            <button
+              onClick={() => setDarkMode(!darkMode)}
+              className={`ml-4 transition-colors duration-300 w-10 h-10 flex items-center justify-center 
+                ${darkMode 
+                  ? "bg-white text-black border border-gray-400 rounded-full" 
+                  : "bg-gray-200 text-blue-900 rounded-full border border-transparent"
+                }`}
+              aria-label="Toggle Dark Mode"
+            >
+              <FontAwesomeIcon icon={darkMode ? faSun : faMoon} />
+            </button>
           </div>
         </nav>
 
         {/* Mobile Header */}
-        <div className="md:hidden flex justify-between items-center px-4 py-3 shadow-md bg-white">
-          <NavLink to="/"><h1 className="text-blue-900 font-bold text-xl">Yano School</h1></NavLink>
+        <div className="md:hidden flex justify-between items-center px-4 py-3 shadow-md bg-white dark:bg-gray-800">
+          <NavLink to="/">
+            <h1 className={`font-bold text-xl ${darkMode ? "text-white" : "text-blue-900"}`}>
+              Yano School
+            </h1>
+          </NavLink>
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle Menu"
-            className="text-xl"
+            className={`text-xl ${darkMode ? "text-white" : "text-gray-800"}`}
           >
             <FontAwesomeIcon icon={faBars} />
           </button>
@@ -169,3 +212,4 @@ function Rootlayout() {
 }
 
 export default Rootlayout;
+

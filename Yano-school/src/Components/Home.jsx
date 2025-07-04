@@ -3,12 +3,14 @@ import heroImage from '../assets/hero.jpg';
 import Mission from "../pages/Mission";
 import Aboutlayout from "../Layout/Aboutlayout";
 import Programsslider from "../Layout/Programsslider";
+import Programslayout from "../Layout/Programslayout";
+import Testimonialslider from "../pages/Testimonialslider";
 
 function Home() {
   return (
     <div className="Home">
       <section
-        className="relative w-full h-[400px] md:h-[500px]"
+        className="relative w-full h-[700px]   md:h-[500px]"
         style={{
           backgroundImage: `url(${heroImage})`,
           backgroundSize: 'cover',
@@ -48,6 +50,10 @@ function Home() {
       </section>
       <section>
         <Programsslider />
+        <Programslayout />
+      </section>
+      <section>
+        <Testimonialslider />
       </section>
     </div>
   );

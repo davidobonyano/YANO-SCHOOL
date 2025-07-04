@@ -8,7 +8,7 @@ import {
 // Components
 import Home from "./Components/Home";
 import About from "./Components/About";
-
+import Programs from "./Components/Programs";
 // Pages
 import Notfound from "./pages/Notfound";
 
@@ -21,6 +21,7 @@ const router = createBrowserRouter(
     <Route path="/" element={<Rootlayout />}>
       <Route index element={<Home />} />
       <Route path="about" element={<About />} />
+      <Route path="programs" element={<Programs />} />
       <Route path="*" element={<Notfound />} />
     </Route>
   ),

@@ -1,7 +1,4 @@
 @import "tailwindcss";
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
 
 
 body, html, #root {
@@ -9,10 +6,48 @@ body, html, #root {
   padding: 0;
   height: 100%;
 }
-
-
-@layer utilities {
-  .hero {
-    background-image: url('/images/hero.jpg');
-  }
+/* VS Code-style Dark Mode */
+body.dark-mode {
+  background-color: #1F222A;
+  color: #D4D4D4;
 }
+
+/* Headers, navs, footer, cards, etc. */
+body.dark-mode header,
+body.dark-mode nav,
+body.dark-mode footer,
+body.dark-mode .card,
+body.dark-mode .section,
+body.dark-mode .content,
+body.dark-mode .bg-gray-100,
+body.dark-mode .bg-gray-200,
+body.dark-mode .bg-white {
+  background-color: #2D2D30 !important;
+  color: #D4D4D4 !important;
+  border: 1px solid #3a3a3d; /* slight border to give separation */
+}
+
+/* All text that was dark before */
+body.dark-mode .text-gray-700,
+body.dark-mode .text-gray-600,
+body.dark-mode .text-black {
+  color: #D4D4D4 !important;
+}
+
+/* Link hover and focus */
+body.dark-mode a:hover {
+  color: #90cdf4 !important;
+}
+
+/* For better spacing/visibility */
+body.dark-mode .shadow-md {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Optional: give cards/panels some radius */
+body.dark-mode .card,
+body.dark-mode .section {
+  border-radius: 6px;
+  padding: 1rem;
+}
+

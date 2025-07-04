@@ -76,7 +76,7 @@ function Programsslider() {
             className="min-w-full flex items-center justify-center flex-col space-y-4 px-4 text-center"
           >
             {slide.icon}
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-800">{slide.text}</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-700">{slide.text}</h2>
           </div>
         ))}
       </div>

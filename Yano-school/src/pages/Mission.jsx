@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Mission() {
   return (
-    <div className=" mb-4 mission px-4 sm:px-8 lg:px-16">
+    <div className=" py-16 mission px-4 sm:px-8 lg:px-16">
       <h2 className=" relative text-3xl mt-4 font-bold text-center">Our Mission and Vision</h2>
       <div className="flex justify-center mb-6">
      <div className="w-16 h-[2px] mt-2 bg-red-400 rounded-full"></div>
