@@ -5,6 +5,8 @@ import Aboutlayout from "../Layout/Aboutlayout";
 import Programsslider from "../Layout/Programsslider";
 import Programslayout from "../Layout/Programslayout";
 import Testimonialslider from "../pages/Testimonialslider";
+import EventsHome from "../Layout/EventsHome";
+
 
 function Home() {
   return (
@@ -47,6 +49,9 @@ function Home() {
       </section>
       <section>
         <Aboutlayout />
+      </section>
+      <section>
+        <EventsHome />
       </section>
       <section>
         <Programsslider />
