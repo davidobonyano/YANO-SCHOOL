@@ -136,12 +136,13 @@ function Rootlayout() {
         </header>
 
         {/* Desktop Top Nav */}
-        <nav className="bg-white dark:bg-gray-800 shadow-md py-4 px-6 hidden md:flex justify-between items-center">
+        <nav className="navbar bg-lightmode-header dark:bg-darkmode-header shadow-md py-4 px-6 hidden md:flex justify-between items-center">
           <NavLink to="/">
             <h1 className={`font-bold text-2xl ${darkMode ? "text-white" : "text-blue-900"}`}>
               Yano School
             </h1>
           </NavLink>
+
           <div className="flex space-x-6 font-medium items-center">
             {navLinks.map(({ path, label }) => (
               <NavLink
@@ -182,7 +183,7 @@ function Rootlayout() {
         </nav>
 
         {/* Mobile Header */}
-        <div className="md:hidden flex justify-between items-center px-4 py-3 shadow-md bg-white dark:bg-gray-800">
+        <div className="mobile-header md:hidden flex justify-between items-center px-4 py-3 shadow-md bg-lightmode-header dark:bg-darkmode-header">
           <NavLink to="/">
             <h1 className={`font-bold text-xl ${darkMode ? "text-white" : "text-blue-900"}`}>
               Yano School
@@ -196,6 +197,7 @@ function Rootlayout() {
             <FontAwesomeIcon icon={faBars} />
           </button>
         </div>
+
 
         {/* Main Content */}
         <main className="flex-grow">
