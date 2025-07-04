@@ -7,12 +7,12 @@ import Programslayout from "../Layout/Programslayout";
 import Testimonialslider from "../pages/Testimonialslider";
 import EventsHome from "../Layout/EventsHome";
 
-
 function Home() {
   return (
     <div className="Home">
+      {/* Hero Section */}
       <section
-        className="relative w-full h-[700px]   md:h-[500px]"
+        className="relative w-full h-screen overflow-hidden"
         style={{
           backgroundImage: `url(${heroImage})`,
           backgroundSize: 'cover',
@@ -20,10 +20,13 @@ function Home() {
           backgroundRepeat: 'no-repeat',
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-l from-blue-800 via-blue-900/50 to-transparent"></div>
-        <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px]"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10"></div>
+        {/* Overlay Layers */}
+        <div className="absolute  to-transparent z-10"></div>
+        <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px] z-10"></div>
 
-        <div className="relative z-10 flex flex-col justify-center h-full text-white px-6 max-w-2xl">
+        {/* Content over background */}
+        <div className="relative z-20 flex flex-col justify-center h-full text-white px-6 max-w-2xl">
           <p className="text-red-400 uppercase tracking-widest font-bold text-sm">
             Choose The Best
           </p>
@@ -44,7 +47,8 @@ function Home() {
         </div>
       </section>
 
-      <section>
+      {/* Other Home Page Sections */}
+      <section className="pt-12">
         <Mission />
       </section>
       <section>

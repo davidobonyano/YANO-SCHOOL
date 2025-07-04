@@ -56,4 +56,10 @@ body.dark-mode .section {
   border-radius: 6px;
   padding: 1rem;
 }
+body.dark-mode .transparent {
+  background-color: rgba(31, 34, 42, 0.6) !important;
+  backdrop-filter: blur(6px);
+  color: #D4D4D4 !important;
+}
+
 
