@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import { format, isAfter, isBefore } from 'date-fns';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarAlt, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+import eventData from '../data/db.json'; // Make sure this path is correct
 
 export default function EventsHome() {
   const [events, setEvents] = useState([]);
@@ -16,20 +16,19 @@ export default function EventsHome() {
   });
 
   useEffect(() => {
-    axios.get('http://localhost:4000/events')
-      .then(res => {
-        const today = new Date();
-        const upcoming = res.data
-          .filter(e => isAfter(new Date(e.date), today))
-          .sort((a, b) => new Date(a.date) - new Date(b.date));
-        const past = res.data
-          .filter(e => isBefore(new Date(e.date), today))
-          .sort((a, b) => new Date(b.date) - new Date(a.date)); // recent first
+    const rawEvents = eventData.events || [];
+    const today = new Date();
 
-        if (upcoming.length > 0) setNextEvent(upcoming[0]);
-        setEvents(past.slice(0, 3)); // latest 3 past events
-      })
-      .catch(err => console.error(err));
+    const upcoming = rawEvents
+      .filter(e => isAfter(new Date(e.date), today))
+      .sort((a, b) => new Date(a.date) - new Date(b.date));
+
+    const past = rawEvents
+      .filter(e => isBefore(new Date(e.date), today))
+      .sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    if (upcoming.length > 0) setNextEvent(upcoming[0]);
+    setEvents(past.slice(0, 3));
   }, []);
 
   useEffect(() => {
@@ -59,18 +58,18 @@ export default function EventsHome() {
   }, [nextEvent]);
 
   return (
-    <section className="py-12 bg-gray-100 dark:bg-[#1F222A] px-4">
-      {/* Header */}
+    <section className=" bg-white section py-12 px-4">
+      {/* Section Header */}
       <div className="text-center mb-10">
-        <h2 className="text-3xl font-bold text-gray-700 dark:text-white">Upcoming Events</h2>
-        <p className="text-gray-600 dark:text-gray-400 mt-2">Mark your calendar and get ready!</p>
+        <h2 className="text-3xl font-bold">Upcoming Events</h2>
+        <p className="mt-2 text-gray-600">Mark your calendar and get ready!</p>
       </div>
 
       {/* Upcoming Event */}
       {nextEvent ? (
-        <div className="max-w-2xl mx-auto bg-white dark:bg-[#2D2D30] text-gray-700 dark:text-gray-200 p-6 rounded-2xl shadow-lg hover:shadow-xl transition duration-300 mb-12">
-          <h3 className="text-2xl font-semibold mb-3 text-gray-700 dark:text-white">{nextEvent.title}</h3>
-          <p className="flex items-center gap-2 text-sm mb-4 text-gray-600 dark:text-gray-400">
+        <div className="card max-w-2xl mx-auto mb-12">
+          <h3 className="text-2xl font-semibold mb-3">{nextEvent.title}</h3>
+          <p className="flex items-center gap-2 text-sm mb-4 text-gray-600">
             <FontAwesomeIcon icon={faCalendarAlt} className="text-red-400" />
             {format(new Date(nextEvent.date), 'PPP')}
           </p>
@@ -99,23 +98,23 @@ export default function EventsHome() {
           )}
         </div>
       ) : (
-        <p className="text-center text-gray-500 dark:text-gray-400">No upcoming events yet.</p>
+        <p className="text-center text-gray-500">No upcoming events yet.</p>
       )}
 
-      {/* Past Events (Recent Highlights) */}
+      {/* Recent Events */}
       {events.length > 0 && (
         <div className="max-w-4xl mx-auto">
-          <h3 className="text-left italic text-sm text-gray-600 dark:text-gray-400 mb-4 ml-1">
+          <h3 className="text-left italic text-sm text-gray-600 mb-4 ml-1">
             *recent events*
           </h3>
-          <div className="bg-white dark:bg-[#2D2D30] p-6 rounded-2xl shadow-md">
+          <div className="card">
             {events.map(ev => (
               <div
                 key={ev.id}
-                className="mb-4 border-b border-gray-200 dark:border-gray-600 pb-4 last:border-none last:pb-0"
+                className="mb-4 border-b border-gray-200 pb-4 last:border-none last:pb-0"
               >
-                <h4 className="text-base font-semibold text-gray-700 dark:text-gray-100">{ev.title}</h4>
-                <p className="flex items-center gap-2 text-xs text-gray-700 dark:text-gray-400 mt-1">
+                <h4 className="text-base font-semibold">{ev.title}</h4>
+                <p className="flex items-center gap-2 text-xs text-gray-700 mt-1">
                   <FontAwesomeIcon icon={faCalendarAlt} className="text-red-400" />
                   {format(new Date(ev.date), 'PPP')}
                   <span className="mx-2">•</span>
@@ -130,7 +129,7 @@ export default function EventsHome() {
 
       {/* No Past Events */}
       {events.length === 0 && (
-        <p className="text-center text-gray-500 dark:text-gray-400">No past events to show.</p>
+        <p className="text-center text-gray-500">No past events to show.</p>
       )}
     </section>
   );
