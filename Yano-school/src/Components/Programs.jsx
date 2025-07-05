@@ -1,90 +1,129 @@
-// src/pages/Programs.jsx
 import React from "react";
+import { NavLink } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faBaby,
+  faChild,
+  faBook,
+  faBrain,
+} from "@fortawesome/free-solid-svg-icons";
+import programsHero from "../assets/programsHero.webp";
+import Secondaryschool from "../pages/programms/Secondaryschool";
+import Clubs from "../pages/programms/Clubs";
+import SchoolCalendar from "../pages/programms/SchoolCalendar";
 
-const Programs = () => {
+function Programs() {
   return (
-    <div className="py-16 px-4 max-w-6xl mx-auto">
-      <h1 className="text-4xl font-bold mb-4 text-center">Explore Our Comprehensive Educational Programs</h1>
-      <p className="text-gray-700 mb-10 text-center">
-        Our school offers well-rounded programs designed to nurture every child's potential—from foundational skills to career preparation.
-      </p>
+    <div className="Programs">
+      {/* Hero Section */}
+      <section
+        className="relative w-full h-[80vh] md:h-[85vh] overflow-hidden"
+        style={{
+          backgroundImage: `url(${programsHero})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent z-10"></div>
+        <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px] z-10"></div>
 
-      {/* Primary School Programs */}
-      <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">Primary School Programs</h2>
-        <ul className="space-y-4">
-          <li>👶 <strong>Early Childhood Education</strong> – Ages 3–5: Pre-nursery and Nursery classes focused on cognitive, social, and emotional development.</li>
-          <li>📚 <strong>Literacy & Numeracy</strong> – Building reading, writing, and basic arithmetic through engaging lessons.</li>
-          <li>🧠 <strong>Critical Thinking & Creativity</strong> – Activities and puzzles designed to spark curiosity and innovation.</li>
-        </ul>
+        <div className="relative z-20 flex flex-col justify-center h-full px-6 text-white max-w-4xl mx-auto">
+          <p className="text-red-400 uppercase tracking-widest font-bold text-sm">
+            Yano Academic Tracks
+          </p>
+          <h1 className="text-4xl md:text-5xl font-bold leading-tight mt-2">
+            Explore Our Comprehensive Educational Programs
+          </h1>
+          <div className="flex justify-start my-4">
+            <div className="w-16 h-[2px] bg-red-400 rounded-full"></div>
+          </div>
+          <p className="text-gray-200 text-lg md:text-xl font-light max-w-3xl">
+            Our school offers well-rounded programs designed to nurture every
+            child's potential—from foundational skills to career preparation.
+          </p>
+        </div>
       </section>
 
-      {/* Secondary School Programs */}
-      <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">Secondary School Programs</h2>
-        
-        <h3 className="text-xl font-medium mt-6 mb-2">Junior Secondary</h3>
-        <p className="mb-4">Core subjects including Math, English, Basic Science, Civic Education, and Intro to ICT.</p>
+      {/* Main Content */}
+      <div className="duration-300">
+        {/* Primary School - Swipeable Cards */}
+        <section className="mb-16 bg-gray-100 px-3 py-6 ">
+          <h2 className="text-2xl font-semibold text-gray-700 mb-6">
+            Primary School Programs
+          </h2>
+          <div className="flex space-x-4 overflow-x-auto pb-4 px-1 -mx-1 scrollbar-thin scrollbar-thumb-red-300">
+            {[
+              {
+                title: "Daycare – Ages 1–3",
+                icon: faBaby,
+                desc: "Safe, nurturing environment for toddlers, promoting early emotional and social development.",
+              },
+              {
+                title: "Early Childhood Education – Ages 3–5",
+                icon: faChild,
+                desc: "Pre-nursery and Nursery classes focused on cognitive, social, and emotional development.",
+              },
+              {
+                title: "Literacy & Numeracy",
+                icon: faBook,
+                desc: "Building reading, writing, and basic arithmetic through engaging lessons.",
+              },
+              {
+                title: "Critical Thinking & Creativity",
+                icon: faBrain,
+                desc: "Activities and puzzles designed to spark curiosity and innovation.",
+              },
+            ].map((item, index) => (
+              <div
+                key={index}
+                className="min-w-[260px] md:min-w-[300px] bg-white border border-gray-200 dark:border-gray-600 rounded-2xl p-5 shadow-md flex-shrink-0"
+              >
+                <FontAwesomeIcon
+                  icon={item.icon}
+                  className="text-3xl text-red-400 mb-4"
+                />
+                <h3 className="font-semibold text-lg text-gray-700  mb-2">
+                  {item.title}
+                </h3>
+                <p className="text-sm text-gray-600 ">
+                  {item.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
 
-        <h3 className="text-xl font-medium mt-6 mb-2">Senior Secondary</h3>
-        <ul className="list-disc list-inside space-y-2">
-          <li><strong>Science Stream:</strong> Physics, Chemistry, Biology, Further Math, etc.</li>
-          <li><strong>Arts Stream:</strong> Literature, CRS/IRS, Government, History, etc.</li>
-          <li><strong>Commercial Stream:</strong> Accounting, Commerce, Economics, Business Studies.</li>
-        </ul>
-      </section>
+        {/* Secondary School */}
+        <section>
+          <Secondaryschool />
+        </section>
+      
+      
 
-      {/* Curriculum Highlights */}
-      <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">Curriculum Highlights</h2>
-        <ul className="space-y-2 list-disc list-inside">
-          <li>WAEC/NECO-focused learning structure</li>
-          <li>Computer-based testing (CBT) integration</li>
-          <li>Emphasis on language development and communication</li>
-        </ul>
-      </section>
+        {/* Special Programs */}
+       <section>
+        <Clubs />
+       </section>
 
-      {/* Special Programs */}
-      <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">Special Programs</h2>
-        <ul className="list-disc list-inside space-y-2">
-          <li>👨‍💻 Coding Club</li>
-          <li>🏫 Leadership Academy</li>
-          <li>☀️ Summer School</li>
-        </ul>
-      </section>
+        {/* Lagos State Academic Calendar */}
+        <section>
+          <SchoolCalendar />
+        </section>
 
-      {/* Co-Curricular Activities */}
-      <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">Co-Curricular Activities</h2>
-        <p>Students also enjoy a variety of enriching activities:</p>
-        <ul className="list-disc list-inside space-y-2">
-          <li>Drama & Performing Arts</li>
-          <li>Debate & Public Speaking</li>
-          <li>Sports (Football, Athletics, etc.)</li>
-          <li>Music & Dance</li>
-          <li>School Press Club</li>
-        </ul>
-      </section>
-
-      {/* Testimonials or Achievements */}
-      <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">Student Achievements</h2>
-        <p>Our students have won national spelling bees, represented the school in science fairs, and consistently outperform on standardized exams.</p>
-      </section>
-
-      {/* Call to Action */}
-      <div className="text-center mt-10">
-        <p className="mb-4 text-lg">Interested in Enrolling?</p>
-        <a
-          href="/admissions"
-          className="inline-block px-6 py-3 bg-green-600 text-white rounded hover:bg-green-700"
-        >
-          Visit Admissions Page
-        </a>
+        {/* CTA */}
+        <div className="text-center flex flex-col items-center justify-center py-12">
+          <p className="text-lg text-gray-700">Interested in Enrolling?</p>
+          <NavLink
+            to="/admissions"
+            className="inline-block mt-4 border border-red-400 px-6 py-3 rounded-3xl text-black hover:bg-red-400 hover:text-white transition duration-300"
+          >
+            Visit Admissions Page →
+          </NavLink>
+        </div>
       </div>
     </div>
   );
-};
+}
 
 export default Programs;
