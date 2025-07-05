@@ -34,10 +34,10 @@ function Programslayout() {
   return (
     <section className="py-12 bg-gray-100  duration-300">
       <div className="text-center mb-10">
-        <h2 className="text-3xl font-bold text-gray-700 dark:text-white">
+        <h2 className="text-3xl font-bold  text-gray-700">
           Why Choose Yano School?
         </h2>
-        <p className="text-gray-700 dark:text-gray-300 mt-2">
+        <p className="text-gray-700  mt-2">
           We provide everything your child needs to thrive.
         </p>
       </div>

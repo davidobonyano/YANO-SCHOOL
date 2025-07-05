@@ -47,8 +47,8 @@ function FeatureCard({ icon, title, description, image }) {
       {/* Text content */}
       <div className="p-6 text-center">
         <FontAwesomeIcon icon={icon} className="text-red-400 text-3xl mb-4" />
-        <h3 className="text-xl font-semibold mb-2 text-gray-700 dark:text-white">{title}</h3>
-        <p className="text-gray-700 dark:text-gray-400">{description}</p>
+        <h3 className="text-xl font-semibold mb-2 text-gray-700">{title}</h3>
+        <p className="text-gray-700">{description}</p>
       </div>
     </div>
   );
