@@ -29,7 +29,7 @@ const Secondaryschool = () => {
 
   return (
     <section className="mb-12 px-4 space-y-10">
-      {/* Hero */}
+      {/* Hero Section with Background Video */}
       <div className="relative w-full h-64 rounded-2xl overflow-hidden shadow-lg">
         <video
           autoPlay
@@ -39,7 +39,10 @@ const Secondaryschool = () => {
           controls
           className="w-full h-full object-cover"
         >
-          <source src="./videos/motivation.mp4" type="video/mp4" />
+          <source
+            src={`${import.meta.env.BASE_URL}videos/motivation.mp4`}
+            type="video/mp4"
+          />
           Your browser does not support the video tag.
         </video>
 
@@ -55,7 +58,7 @@ const Secondaryschool = () => {
         Secondary School Programs
       </h3>
 
-      {/* Content Grid */}
+      {/* Program Cards */}
       <div className="grid md:grid-cols-2 gap-8 text-gray-700">
         {/* Junior Secondary */}
         <div className="bg-white rounded-xl shadow p-6 hover:shadow-lg transition">
@@ -95,7 +98,7 @@ const Secondaryschool = () => {
         </div>
       </div>
 
-      {/* Upcoming Event */}
+      {/* Upcoming Event Section */}
       <div className="bg-red-50 p-6 rounded-xl flex flex-col gap-4">
         {nextEvent ? (
           <>

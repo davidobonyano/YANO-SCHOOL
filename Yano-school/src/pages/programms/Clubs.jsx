@@ -9,27 +9,28 @@ import {
   faFutbol,
   faMusic,
   faNewspaper,
-} from  '@fortawesome/free-solid-svg-icons';
+} from '@fortawesome/free-solid-svg-icons';
 
 export default function Clubs() {
   const [showAll, setShowAll] = useState(false);
 
+  const base = import.meta.env.BASE_URL;
+
   const programs = [
-    { icon: faLaptopCode, title: "Coding Club", bg: "./images/code.avif" },
-    { icon: faUsers, title: "Leadership Academy", bg: "./images/leadership.avif" },
-    { icon: faSun, title: "Summer School", bg: "./images/summer.jpeg" },
+    { icon: faLaptopCode, title: "Coding Club", bg: `${base}images/code.avif` },
+    { icon: faUsers, title: "Leadership Academy", bg: `${base}images/leadership.avif` },
+    { icon: faSun, title: "Summer School", bg: `${base}images/summer.jpeg` },
   ];
 
   const activities = [
-    { icon: faTheaterMasks, title: "Drama & Performing Arts", bg: "./images/drama.jpeg" },
-    { icon: faMicrophone, title: "Debate & Public Speaking", bg: "./images/debate.jpeg" },
-    { icon: faFutbol, title: "Sports", bg: "./images/sport.jpeg" },
-    { icon: faMusic, title: "Music & Dance", bg: "./images/music.webp" },
-    { icon: faNewspaper, title: "School Press Club", bg: "./images/press.avif" },
+    { icon: faTheaterMasks, title: "Drama & Performing Arts", bg: `${base}images/drama.jpeg` },
+    { icon: faMicrophone, title: "Debate & Public Speaking", bg: `${base}images/debate.jpeg` },
+    { icon: faFutbol, title: "Sports", bg: `${base}images/sport.jpeg` },
+    { icon: faMusic, title: "Music & Dance", bg: `${base}images/music.webp` },
+    { icon: faNewspaper, title: "School Press Club", bg: `${base}images/press.avif` },
   ];
 
   const combined = [...programs, ...activities];
-
   const visibleItems = showAll ? combined : combined.slice(0, 6);
 
   return (
