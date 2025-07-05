@@ -1,23 +1,30 @@
-// TestimonialsSlider.jsx
 import { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faQuoteRight } from "@fortawesome/free-solid-svg-icons";
 
+// Importing images from src/assets
+import davidImage from "../assets/images/students/dyano.jpg";
+import johnImage from "../assets/images/students/peace.avif";
+import fatimaImage from "../assets/images/students/fatima.webp";
+
 const slides = [
   {
-    name: "Jane Doe",
-    message: "Yano School helped me build confidence and excel academically.",
-    image: "/images/students/jane.jpg",
+    name: "David Efe",
+    title: "Geologist & Programmer",
+    message: "Na Yano School make me sabi book well-well. Now I dey code and crack rock!",
+    image: davidImage,
   },
   {
-    name: "John Smith",
-    message: "The supportive teachers and modern classrooms made learning fun.",
-    image: "/images/students/john.jpg",
+    name: "John Peace",
+    title: "Accountant (ACA, ICAN)",
+    message: "Yano School gave me a strong foundation to pursue the highest professional qualifications in Nigeria.",
+    image: johnImage,
   },
   {
     name: "Fatima Abdul",
-    message: "From sports to science fairs, I had the best experience!",
-    image: "/images/students/fatima.jpg",
+    title: "Surgical Intern (Doctor sha.)",
+    message: "Yano School prepared me for life... but them no prepare me for how fast phone battery dey finish in medical school!",
+    image: fatimaImage,
   },
 ];
 
@@ -28,7 +35,6 @@ function Testimonialslider() {
   const touchEndX = useRef(null);
 
   useEffect(() => {
-    // Prevent transition on first load
     const timeout = setTimeout(() => setHasMounted(true), 100);
     return () => clearTimeout(timeout);
   }, []);
@@ -65,12 +71,12 @@ function Testimonialslider() {
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
-      <h2 className="text-3xl font-bold text-center ">
+      <h2 className="text-3xl font-bold text-center">
         What Our Students Say
       </h2>
       <div className="flex justify-center mb-6">
-     <div className="w-16 h-[2px] mt-2 bg-red-400 rounded-full"></div>
-       </div>
+        <div className="w-16 h-[2px] mt-2 bg-red-400 rounded-full"></div>
+      </div>
 
       <div
         className={`flex ${
@@ -86,7 +92,7 @@ function Testimonialslider() {
             <img
               src={slide.image}
               alt={slide.name}
-              className="w-24 h-24 rounded-full mb-4 object-cover border-4 border-red-400"
+              className="w-28 h-28 rounded-full mb-4 object-cover"
             />
             <p className="text-lg text-gray-700 max-w-xl italic relative">
               “{slide.message}”
@@ -96,6 +102,7 @@ function Testimonialslider() {
               />
             </p>
             <p className="mt-6 font-semibold text-gray-700">{slide.name}</p>
+            <p className="text-sm text-gray-500">{slide.title}</p>
           </div>
         ))}
       </div>

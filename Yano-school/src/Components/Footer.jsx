@@ -6,17 +6,25 @@ import {
   faInstagram,
   faYoutube,
 } from '@fortawesome/free-brands-svg-icons';
+import { NavLink } from 'react-router-dom' // Importing Yano School logo
+import YanoLogo from '../assets/yano logo.png'; // Adjust the path as necessary
 
 const Footer = () => {
   return (
     <footer className=" bg-gray-100 text-gray-700">
 
-      {/* Top Section */}
+   
       <div className="max-w-6xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-2 gap-8">
-        
+
         {/* Logo & About */}
         <div>
-          <img src="/logo.png" alt="Yano School Logo" className="w-24 mb-4" />
+           <NavLink to="/">
+                       <img
+                         src={YanoLogo}
+                         alt="Yano School Logo"
+                         className="h-16 w-auto object-contain"
+                       />
+                     </NavLink>
           <p className="text-sm">
             Nurturing future leaders through education, values, and opportunity.
           </p>

@@ -2,27 +2,17 @@ import { useEffect, useState, useRef } from "react";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faHome,
-  faInfoCircle,
-  faGraduationCap,
-  faUserPlus,
-  faEnvelope,
-  faPhone,
-  faMapMarkerAlt,
-  faBars,
-  faTimes,
-  faSun,
-  faMoon,
+  faHome, faInfoCircle, faGraduationCap, faUserPlus, faEnvelope,
+  faPhone, faMapMarkerAlt, faBars, faTimes, faSun, faMoon, faArrowUp
 } from "@fortawesome/free-solid-svg-icons";
 import Footer from "../Components/Footer";
+import YanoLogo from "../assets/yano logo.png";
 
 function Rootlayout() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [touchStartX, setTouchStartX] = useState(0);
-  const [touchEndX, setTouchEndX] = useState(0);
   const [darkMode, setDarkMode] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
   const sidebarRef = useRef();
-
   const location = useLocation();
   const isHomePage = location.pathname === "/";
 
@@ -37,6 +27,13 @@ function Rootlayout() {
   useEffect(() => {
     const storedMode = localStorage.getItem("darkMode") === "true";
     setDarkMode(storedMode);
+
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 300);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
@@ -48,30 +45,38 @@ function Rootlayout() {
     document.body.style.overflow = menuOpen ? "hidden" : "auto";
   }, [menuOpen]);
 
-  const handleTouchStart = (e) => setTouchStartX(e.touches[0].clientX);
-  const handleTouchMove = (e) => setTouchEndX(e.touches[0].clientX);
-  const handleTouchEnd = () => {
-    if (touchStartX - touchEndX > 50) setMenuOpen(false);
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
     <div className="relative font-sans text-gray-700 min-h-screen overflow-x-hidden">
+      {/* Back to Top Button */}
+      {showScrollTop && (
+        <button
+          onClick={scrollToTop}
+          className={`fixed bottom-4 left-4 z-50 p-3 rounded-full shadow-md transition-colors duration-300 ${
+            darkMode ? "bg-white text-black" : "bg-blue-700 text-white"
+          } hover:scale-110`}
+          aria-label="Back to top"
+        >
+          <FontAwesomeIcon icon={faArrowUp} />
+        </button>
+      )}
+
       {menuOpen && (
         <div
-          className="fixed inset-0 bg-black/30 z-40 md:hidden"
+          className="fixed inset-0 bg-black/30 z-40 lg:hidden"
           onClick={() => setMenuOpen(false)}
         ></div>
       )}
 
-      {/* Sidebar - Mobile */}
+      {/* Sidebar - Mobile and Tablet */}
       <div
         ref={sidebarRef}
-        className={`fixed top-0 right-0 h-full w-[70%] bg-white dark-sidebar z-50 p-6 transition-transform duration-300 ease-in-out md:hidden ${
+        className={`fixed top-0 right-0 h-full w-[70%] bg-white dark-sidebar z-50 p-6 transition-transform duration-300 ease-in-out lg:hidden ${
           menuOpen ? "translate-x-0" : "translate-x-full"
         }`}
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
       >
         <button
           onClick={() => setMenuOpen(false)}
@@ -100,69 +105,63 @@ function Rootlayout() {
           ))}
         </nav>
 
-        {/* Dark Mode Toggle - Mobile */}
-    <button
-      onClick={() => {
-        setDarkMode(!darkMode);
-        setMenuOpen(false); // close the sidebar
-      }}
-      className={`mt-8 self-start transition-colors duration-300 w-10 h-10 flex items-center justify-center 
-        ${darkMode 
-          ? "bg-white text-black border border-gray-400 rounded-full" 
-          : "bg-gray-200 text-blue-900 rounded-full border border-transparent"
-        }`}
-      aria-label="Toggle Dark Mode"
-    >
-      <FontAwesomeIcon icon={darkMode ? faSun : faMoon} />
-    </button>
-
+        {/* Dark Mode Toggle */}
+        <button
+          onClick={() => {
+            setDarkMode(!darkMode);
+            setMenuOpen(false);
+          }}
+          className={`mt-8 self-start transition-colors duration-300 w-10 h-10 flex items-center justify-center 
+            ${darkMode 
+              ? "bg-white text-black border border-gray-400 rounded-full" 
+              : "bg-gray-200 text-blue-900 rounded-full border border-transparent"
+            }`}
+          aria-label="Toggle Dark Mode"
+        >
+          <FontAwesomeIcon icon={darkMode ? faSun : faMoon} />
+        </button>
       </div>
 
       {/* Main Page Content */}
-      <div
-        className={`transition-transform duration-500 ease-in-out ${
-          menuOpen ? "-translate-x-[70%] scale-[0.7] rounded-lg overflow-hidden" : ""
-        }`}
-      >
-        {/* Contact Header */}
-        <header
-            className={`text-sm py-2 px-4 flex justify-between items-center flex-wrap z-20 transition-all duration-300 ${
-              isHomePage
-                ? "absolute top-0 left-0 w-full text-gray-800 bg-transparent "
-                : "bg-gray-100 text-gray-600 dark:bg-transparent dark:text-white"
-            }`}
-           >
-            <div className="flex flex-wrap gap-4 items-center">
-              <span className="flex items-center gap-2">
-                <FontAwesomeIcon icon={faPhone} />
-                +234 90 355 26 146
-              </span>
-              <span className="flex items-center gap-2">
-                <FontAwesomeIcon icon={faEnvelope} />
-                info@yanoschool.com
-              </span>
-              <span className="flex items-center gap-2">
-                <FontAwesomeIcon icon={faMapMarkerAlt} />
-                Ikorodu, Lagos.
-              </span>
-            </div>
-          </header>
+      <div className={`transition-transform duration-500 ease-in-out ${
+        menuOpen ? "-translate-x-[70%] scale-[0.7] rounded-lg overflow-hidden" : ""
+      }`}>
 
+        {/* Contact Header */}
+        <header className={`text-sm py-2 px-4 flex justify-between items-center flex-wrap z-20 transition-all duration-300 ${
+          isHomePage
+            ? "absolute top-0 left-0 w-full text-gray-700 bg-transparent"
+            : "bg-gray-100 text-gray-600"
+        }`}>
+          <div className="flex flex-wrap gap-4 items-center">
+            <span className="flex items-center gap-2">
+              <FontAwesomeIcon icon={faPhone} />
+              +234 90 355 26 146
+            </span>
+            <span className="flex items-center gap-2">
+              <FontAwesomeIcon icon={faEnvelope} />
+              info@yanoschool.com
+            </span>
+            <span className="flex items-center gap-2">
+              <FontAwesomeIcon icon={faMapMarkerAlt} />
+              Ikorodu, Lagos.
+            </span>
+          </div>
+        </header>
 
         {/* Desktop Nav */}
-       <nav
-          className={`z-30 transition-all duration-300 hidden md:flex items-center px-6 ${
-            isHomePage
-              ? "absolute top-10 left-1/2 transform -translate-x-1/2 w-[70%] bg-white text-blue-900 rounded-xl shadow-md py-2 justify-between"
-              : "bg-lightmode-header dark:bg-darkmode-header shadow-md py-4 justify-between"
-          }`}
-        >
+        <nav className={`z-30 hidden lg:flex items-center px-6 ${
+          isHomePage
+            ? "absolute lg:top-13 left-1/2 transform -translate-x-1/2 w-[80%] bg-white text-blue-900 rounded-xl shadow-md  justify-between"
+            : "bg-lightmode-header dark:bg-darkmode-header shadow-md py-4 justify-between"
+        }`}>
           <NavLink to="/">
-            <h1 className={`font-bold text-2xl ${darkMode ? "text-blue-900" : "text-blue-900"}`}>
-              Yano School
-            </h1>
+            <img
+              src={YanoLogo}
+              alt="Yano School Logo"
+              className="h-16 w-auto object-contain"
+            />
           </NavLink>
-
           <div className="flex space-x-6 font-medium items-center">
             {navLinks.map(({ path, label }) => (
               <NavLink
@@ -176,62 +175,51 @@ function Rootlayout() {
                   } hover:text-blue-700 dark:hover:text-white`
                 }
               >
-                {({ isActive }) => (
-                  <span className="relative group">
-                    {label}
-                    <span
-                      className={`absolute left-0 bottom-0 h-[2px] bg-blue-700 transition-all duration-300 ${
-                        isActive ? "w-full" : "w-0 group-hover:w-full"
-                      }`}
-                    ></span>
-                  </span>
-                )}
+                {label}
+                <span
+                  className={`absolute left-0 -bottom-3 h-[2px] bg-blue-700 transition-all duration-300 ${
+                    location.pathname === path ? "w-full" : "w-0 group-hover:w-full"
+                  }`}
+                ></span>
               </NavLink>
             ))}
-
-            {/* Dark Mode Toggle */}
-             <button
-                  onClick={() => {
-                    setDarkMode(!darkMode);
-                    setMenuOpen(false); // just in case mobile menu was left open
-                  }}
-                  className={`ml-4 transition-colors duration-300 w-10 h-10 flex items-center justify-center 
-                    ${darkMode 
-                      ? "bg-white text-black border border-gray-400 rounded-full" 
-                      : "bg-gray-200 text-blue-900 rounded-full border border-transparent"
-                    }`}
-                  aria-label="Toggle Dark Mode"
-                >
-                  <FontAwesomeIcon icon={darkMode ? faSun : faMoon} />
-             </button>
-
+            <button
+              onClick={() => setDarkMode(!darkMode)}
+              className={`ml-4 transition-colors duration-300 w-10 h-10 flex items-center justify-center 
+                ${darkMode 
+                  ? "bg-white text-black border border-gray-400 rounded-full" 
+                  : "bg-gray-200 text-blue-900 rounded-full border border-transparent"
+                }`}
+              aria-label="Toggle Dark Mode"
+            >
+              <FontAwesomeIcon icon={darkMode ? faSun : faMoon} />
+            </button>
           </div>
         </nav>
 
-
-        {/* Mobile Header */}
-      <div className={`md:hidden flex justify-between items-center px-4 py-3 shadow-md transition-all duration-300 ${
-        isHomePage
-          ? "absolute top-16 w-[70%] left-1/2 transform -translate-x-1/2 bg-white z-30 rounded-xl shadow-md"
-          : "bg-lightmode-header dark:bg-darkmode-header"
-      }`}>
-        <NavLink to="/">
-          <h1 className={`font-bold text-xl ${
-            isHomePage ? "text-blue-900" : darkMode ? "text-white" : "text-blue-900"
-          }`}>
-            Yano School
-          </h1>
-        </NavLink>
-        <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle Menu"
-          className={`text-xl ${
-            isHomePage ? "text-blue-900" : darkMode ? "text-white" : "text-gray-800"
-          }`}
-        >
-          <FontAwesomeIcon icon={faBars} />
-        </button>
-      </div>
+        {/* Mobile & Tablet Header */}
+        <div className={`flex lg:hidden justify-between items-center px-4  shadow-md transition-all duration-300 ${
+          isHomePage
+            ? "absolute top-[80px] w-[80%]  left-1/2 transform -translate-x-1/2 bg-white z-30 rounded-xl shadow-md"
+            : "bg-lightmode-header dark:bg-darkmode-header"
+        }`}>
+          <NavLink to="/">
+            <img
+              src={YanoLogo}
+              alt="Yano School Logo"
+              className="h-15 w-auto object-contain"
+            />
+          </NavLink>
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle Menu"
+            className={`text-xl ${
+              isHomePage ? "text-blue-900" : darkMode ? "text-white" : "text-gray-800"
+            }`}
+          >
+            <FontAwesomeIcon icon={faBars} />
+          </button>
+        </div>
 
         {/* Main Content */}
         <main className="flex-grow">
@@ -239,8 +227,8 @@ function Rootlayout() {
         </main>
 
         {/* Footer */}
-        <footer >
-         <Footer />
+        <footer>
+          <Footer />
         </footer>
       </div>
     </div>
