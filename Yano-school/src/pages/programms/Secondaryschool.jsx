@@ -61,16 +61,30 @@ const Secondaryschool = () => {
       {/* Program Cards */}
       <div className="grid md:grid-cols-2 gap-8 text-gray-700">
         {/* Junior Secondary */}
-        <div className="bg-white rounded-xl shadow p-6 hover:shadow-lg transition">
+    <div className="bg-white rounded-xl shadow p-6 hover:shadow-lg transition">
           <h4 className="text-xl font-medium text-red-400 mb-2 flex items-center">
             <FontAwesomeIcon icon={faChalkboardTeacher} className="mr-2 text-red-400" />
             Junior Secondary
           </h4>
-          <p className="text-sm">
-            A strong foundation in Math, English, Basic Science, Civic Education, and Intro to ICT
-            prepares students for a smooth academic transition.
+          <p className="text-sm text-gray-600 mb-4">
+            A strong foundation across these subjects prepares students for a smooth academic transition:
           </p>
+          <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
+            <li>Mathematics</li>
+            <li>English Language</li>
+            <li>Basic Science</li>
+            <li>Basic Technology</li>
+            <li>Civic Education</li>
+            <li>Social Studies</li>
+            <li>Introductory ICT</li>
+            <li>Agricultural Science</li>
+            <li>Home Economics</li>
+            <li>Physical & Health Education</li>
+            <li>Creative Arts</li>
+            <li>Religious & Moral Instruction</li>
+          </ul>
         </div>
+
 
         {/* Senior Secondary */}
         <div className="bg-white rounded-xl shadow p-6 hover:shadow-lg transition">
@@ -105,11 +119,11 @@ const Secondaryschool = () => {
             <div className="flex items-start space-x-3">
               <FontAwesomeIcon icon={faCalendarAlt} className="text-red-400 text-xl mt-1" />
               <div>
-                <h5 className="font-semibold">Upcoming Event:</h5>
-                <p className="text-gray-600 text-sm">
+                <h5 className="font-semibold text-gray-900">Upcoming Event:</h5>
+                <p className="text-gray-900 text-sm">
                   {nextEvent.title} — {format(new Date(nextEvent.date), "PPP")}
                 </p>
-                <p className="text-sm text-gray-600 flex items-center mt-1">
+                <p className="text-sm text-gray-900 flex items-center mt-1">
                   <FontAwesomeIcon icon={faMapMarkerAlt} className="text-red-400 mr-1" />
                   {nextEvent.location}
                 </p>
@@ -125,7 +139,7 @@ const Secondaryschool = () => {
             </button>
 
             {showDescription && (
-              <div className="bg-white border border-gray-200 rounded-lg p-4 text-sm text-gray-700 shadow">
+              <div className="bg-white border border-gray-200 rounded-lg p-4 text-sm text-gray-900 shadow">
                 <strong>Description:</strong>
                 <p className="mt-1">{nextEvent.description}</p>
               </div>

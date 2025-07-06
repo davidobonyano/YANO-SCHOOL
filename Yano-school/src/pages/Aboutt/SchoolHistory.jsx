@@ -26,9 +26,9 @@ const AnimatedText = ({ text }) => {
 
 export default function SchoolHistory() {
   return (
-    <section className="bg-gradient-to-br from-blue-50 via-white to-red-50 py-20 px-6 sm:px-10">
+    <section className="bg-gradient-to-br backdrop-blur from-blue-50 via-white to-red-50 py-20 px-6 sm:px-10">
       <div className="max-w-5xl mx-auto">
-        {/* Section Header (like Mission.jsx) */}
+        {/* Section Header */}
         <Motion.div
           className="mb-8"
           initial={{ opacity: 0, x: -30 }}
@@ -36,14 +36,14 @@ export default function SchoolHistory() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl font-bold text-gray-700 relative inline-block">
+          <h2 className="text-3xl font-bold text-gray-900 relative inline-block">
             Our Journey
             <span className="block w-12 h-1 bg-red-500 mt-2 rounded-full" />
           </h2>
         </Motion.div>
 
         {/* Paragraphs (word-by-word animated) */}
-        <div className="space-y-6 text-base sm:text-lg text-gray-600 leading-relaxed">
+        <div className="space-y-6 text-base sm:text-lg text-gray-900 leading-relaxed">
           <p>
             <AnimatedText text="Yano School opened its doors in January 2008, beginning with a single classroom and a powerful mission: to nurture young minds through excellence in education and character." />
           </p>

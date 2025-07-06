@@ -6,8 +6,8 @@ import ContactImage from '../assets/contact-bg.avif'; // Optional
 
 export default function Contact() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
+    from_name: '',
+    from_email: '',
     subject: '',
     message: ''
   });
@@ -16,9 +16,9 @@ export default function Contact() {
 
   const validate = () => {
     const newErrors = {};
-    if (!formData.name.trim()) newErrors.name = 'Name is required';
-    if (!formData.email) newErrors.email = 'Email is required';
-    else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = 'Email is invalid';
+    if (!formData.from_name.trim()) newErrors.from_name = 'Name is required';
+    if (!formData.from_email) newErrors.from_email = 'Email is required';
+    else if (!/\S+@\S+\.\S+/.test(formData.from_email)) newErrors.from_email = 'Email is invalid';
     if (!formData.subject) newErrors.subject = 'Please choose a subject';
     if (!formData.message.trim()) newErrors.message = 'Message cannot be empty';
     return newErrors;
@@ -45,7 +45,7 @@ export default function Contact() {
         'phKaaqTvGUlJ-TvKe'
       );
       setIsSent(true);
-      setFormData({ name: '', email: '', subject: '', message: '' });
+      setFormData({ from_name: '', from_email: '', subject: '', message: '' });
     } catch (error) {
       alert('Failed to send message. Try again.');
       console.error(error);
@@ -73,23 +73,23 @@ export default function Contact() {
           <form className="space-y-4" onSubmit={handleSubmit}>
             <input
               type="text"
-              name="name"
+              name="from_name"
               placeholder="Your Name"
-              value={formData.name}
+              value={formData.from_name}
               onChange={handleChange}
               className="w-full p-3 border rounded focus:outline-none focus:ring-2 focus:ring-red-400"
             />
-            {errors.name && <p className="text-sm text-red-500">{errors.name}</p>}
+            {errors.from_name && <p className="text-sm text-red-500">{errors.from_name}</p>}
 
             <input
               type="email"
-              name="email"
+              name="from_email"
               placeholder="Your Email"
-              value={formData.email}
+              value={formData.from_email}
               onChange={handleChange}
               className="w-full p-3 border rounded focus:outline-none focus:ring-2 focus:ring-red-400"
             />
-            {errors.email && <p className="text-sm text-red-500">{errors.email}</p>}
+            {errors.from_email && <p className="text-sm text-red-500">{errors.from_email}</p>}
 
             <select
               name="subject"
@@ -166,30 +166,29 @@ export default function Contact() {
         </div>
       </div>
 
-        {/* Map */}
-        <div className="max-w-6xl mx-auto px-4 pb-16">
-            <h2 className="text-2xl font-bold text-gray-700 mb-4">Find Us on the Map</h2>
-            <div className="rounded-xl overflow-hidden shadow-lg h-64 border">
-                <iframe
-                src="https://www.google.com/maps?q=6.689165,3.4672584&z=17&output=embed"
-                width="100%"
-                height="100%"
-                allowFullScreen=""
-                loading="lazy"
-                title="Yano School Map"
-                className="border-none"
-                ></iframe>
-            </div>
-            <a
-                href="https://www.google.com/maps?q=6.689165,3.4672584"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-red-500 hover:underline text-sm mt-2 inline-block"
-            >
-                View on Google Maps
-            </a>
-            </div>
-
+      {/* Map */}
+      <div className="max-w-6xl mx-auto px-4 pb-16">
+        <h2 className="text-2xl font-bold text-gray-700 mb-4">Find Us on the Map</h2>
+        <div className="rounded-xl overflow-hidden shadow-lg h-64 border">
+          <iframe
+            src="https://www.google.com/maps?q=6.689165,3.4672584&z=17&output=embed"
+            width="100%"
+            height="100%"
+            allowFullScreen=""
+            loading="lazy"
+            title="Yano School Map"
+            className="border-none"
+          ></iframe>
+        </div>
+        <a
+          href="https://www.google.com/maps?q=6.689165,3.4672584"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-red-500 hover:underline text-sm mt-2 inline-block"
+        >
+          View on Google Maps
+        </a>
+      </div>
     </section>
   );
 }
