@@ -140,7 +140,7 @@ function Rootlayout() {
             </span>
             <span className="flex items-center gap-2">
               <FontAwesomeIcon icon={faEnvelope} />
-              info@yanoschool.com
+              yanoschoools@gmail.com
             </span>
             <span className="flex items-center gap-2">
               <FontAwesomeIcon icon={faMapMarkerAlt} />
@@ -154,7 +154,8 @@ function Rootlayout() {
           isHomePage
             ? "absolute lg:top-13 left-1/2 transform -translate-x-1/2 w-[80%] bg-white text-blue-900 rounded-xl shadow-md  justify-between"
             : "bg-lightmode-header dark:bg-darkmode-header shadow-md py-4 justify-between"
-        }`}>
+        }`} >
+        
           <NavLink to="/">
             <img
               src={YanoLogo}

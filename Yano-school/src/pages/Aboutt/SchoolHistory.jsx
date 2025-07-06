@@ -26,7 +26,7 @@ const AnimatedText = ({ text }) => {
 
 export default function SchoolHistory() {
   return (
-    <section className="bg-white py-20 px-6 sm:px-10">
+    <section className="bg-gradient-to-br from-blue-50 via-white to-red-50 py-20 px-6 sm:px-10">
       <div className="max-w-5xl mx-auto">
         {/* Section Header (like Mission.jsx) */}
         <Motion.div

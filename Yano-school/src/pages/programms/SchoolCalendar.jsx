@@ -1,133 +1,34 @@
-import React, { useState } from "react";
-import {
-  faUserTie,
-  faChalkboardTeacher,
-  faShieldAlt,
-  faBroom,
-  faUserGraduate,
-  faQuoteLeft,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; 
+import { faCalendarAlt, faDownload } from '@fortawesome/free-solid-svg-icons';
 
-const LeadershipTeam = () => {
+export default function SchoolCalendar() {
   const base = import.meta.env.BASE_URL;
 
-  const team = [
-    {
-      name: "Mr. Obonyano, AAT, ACA (ICAN)",
-      role: "Proprietor & Chairman",
-      icon: faUserTie,
-      photo: `${base}team/placeholders/teacher1.jpg`,
-      bio: "A seasoned accounting professional overseeing school governance and strategic direction.",
-      funFact: "Enjoys chess and coffee.",
-    },
-    {
-      name: "Mr. Oboh",
-      role: "Headmaster – Ketu Campus",
-      icon: faChalkboardTeacher,
-      photo: `${base}team/placeholders/teacher2.jpg`,
-      bio: "Experienced in academic leadership with a passion for student discipline and growth.",
-      funFact: "Plays chess competitively.",
-    },
-    {
-      name: "Mrs. Soetan",
-      role: "Headmistress – Ikorodu Campus",
-      icon: faChalkboardTeacher,
-      photo: `${base}team/placeholders/teacher3.jpg`,
-      bio: "Dedicated to fostering a nurturing academic environment with high standards.",
-      funFact: "Loves gardening on weekends.",
-    },
-    {
-      name: "Mr. Adeyemi",
-      role: "Senior Teacher (Math & ICT)",
-      icon: faUserGraduate,
-      photo: `${base}team/placeholders/teacher4.jpg`,
-      bio: "Manages class schedules, results, and teaches core STEM subjects.",
-      funFact: "Loves coding and jazz.",
-    },
-    {
-      name: "Mrs. Chukwu",
-      role: "English Teacher & Admissions",
-      icon: faUserGraduate,
-      photo: `${base}team/placeholders/teacher2.jpg`,
-      bio: "Handles school admissions and excels at literature and essay coaching.",
-      funFact: "Writes poetry in her spare time.",
-    },
-    {
-      name: "Mr. Lawal",
-      role: "Security Officer",
-      icon: faShieldAlt,
-      photo: `${base}team/placeholders/teacher1.jpg`,
-      bio: "Responsible for maintaining a safe and secure school environment.",
-      funFact: "Former amateur boxer.",
-    },
-    {
-      name: "Mrs. Fatima",
-      role: "Cleaner & Facility Staff",
-      icon: faBroom,
-      photo: `${base}team/placeholders/teacher3.jpg`,
-      bio: "Ensures our environment is clean, welcoming, and sanitized daily.",
-      funFact: "Enjoys painting landscapes.",
-    },
-  ];
-
   return (
-    <section className="py-16 px-4 bg-gray-50 dark:bg-gray-900">
-      <h2 className="text-center text-3xl font-bold text-gray-800 dark:text-gray-100 mb-12">
-        Leadership & Team
+    <section className="mb-16 bg-gray-100 px-4 py-8 rounded-2xl shadow-inner">
+      <h2 className="text-2xl font-semibold text-gray-700 mb-4 flex items-center">
+        <FontAwesomeIcon icon={faCalendarAlt} className="text-red-400 mr-2" />
+        2024/2025 Lagos State School Calendar
       </h2>
 
-      <div className="max-w-6xl mx-auto grid gap-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
-        {team.map((member, index) => (
-          <TeamCard key={index} {...member} />
-        ))}
+      <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-6">
+        <li><strong>1st Term:</strong> Sept 9, 2024 – Dec 13, 2024</li>
+        <li><strong>2nd Term:</strong> Jan 6, 2025 – Apr 11, 2025</li>
+        <li><strong>3rd Term:</strong> Apr 28, 2025 – Jul 28, 2025</li>
+        <li>Mid‑term breaks and public holidays follow Lagos State government announcements.</li>
+      </ul>
+
+      <div className="flex flex-col sm:flex-row gap-4">
+        <a
+          href={`${base}files/lagos.pdf`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center justify-center px-6 py-2 bg-red-400 text-white rounded-full hover:bg-red-500 transition text-sm shadow"
+        >
+          <FontAwesomeIcon icon={faDownload} className="mr-2" />
+          View PDF
+        </a>
       </div>
     </section>
   );
-};
-
-const TeamCard = ({ name, role, icon, photo, bio, funFact }) => {
-  const [open, setOpen] = useState(false);
-
-  return (
-    <div className="bg-white dark:bg-gray-800 rounded-2xl shadow hover:shadow-xl transition duration-300 overflow-hidden">
-      {/* Full-width Image */}
-      <div className="w-full h-64">
-        <img
-          src={photo}
-          alt={name}
-          className="w-full h-full object-cover"
-          loading="lazy"
-        />
-      </div>
-
-      {/* Card Content */}
-      <div className="p-5 flex flex-col items-center text-center">
-        <FontAwesomeIcon icon={icon} className="text-red-400 text-xl mb-2" />
-        <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-100">
-          {name}
-        </h3>
-        <p className="italic text-sm text-gray-600 dark:text-gray-300 mb-2">
-          {role}
-        </p>
-
-        <button
-          onClick={() => setOpen(!open)}
-          className="text-sm text-red-500 hover:underline focus:outline-none mb-2"
-        >
-          {open ? "Hide Bio ▲" : "Read Bio ▼"}
-        </button>
-
-        {open && (
-          <div className="text-sm text-gray-700 dark:text-gray-200 bg-gray-100 dark:bg-gray-700 rounded p-3 mt-2">
-            <FontAwesomeIcon icon={faQuoteLeft} className="mr-2 text-red-300" />
-            <p>{bio}</p>
-            <p className="mt-2 text-xs italic">Fun fact: {funFact}</p>
-          </div>
-        )}
-      </div>
-    </div>
-  );
-};
-
-export default LeadershipTeam;
+}

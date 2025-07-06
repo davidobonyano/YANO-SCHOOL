@@ -33,13 +33,41 @@ const Footer = () => {
         {/* Secondary Navigation */}
         <div>
           <h4 className="text-red-400 font-semibold mb-4">Explore</h4>
-          <ul className="space-y-2 text-sm">
-            <li><a href="#" className="hover:text-red-500 transition">Clubs & Activities</a></li>
-            <li><a href="#" className="hover:text-red-500 transition">Parent Resources</a></li>
-            <li><a href="#" className="hover:text-red-500 transition">School Calendar</a></li>
-            <li><a href="#" className="hover:text-red-500 transition">Uniform Guidelines</a></li>
-            <li><a href="#" className="hover:text-red-500 transition">Holiday Schedule</a></li>
-          </ul>
+         <ul className="space-y-2 text-sm">
+  <li>
+    <NavLink
+      to="/programs"
+      className="hover:text-red-500 transition"
+    >
+      Clubs & Activities
+    </NavLink>
+  </li>
+  <li>
+    <NavLink
+      to="/programs"
+      className="hover:text-red-500 transition"
+    >
+      School Calendar
+    </NavLink>
+  </li>
+  <li>
+    <NavLink
+      to="/about"
+      className="hover:text-red-500 transition"
+    >
+      Uniform Guidelines
+    </NavLink>
+  </li>
+  <li>
+    <NavLink
+      to="/programs"
+      className="hover:text-red-500 transition"
+    >
+      Holiday Schedule
+    </NavLink>
+  </li>
+</ul>
+
         </div>
 
       </div>
