@@ -46,7 +46,7 @@ export default function Admissions() {
           <li>Purchase and complete the application form.</li>
           <li>Submit required documents at the school office.</li>
           <li>Sit for the entrance examination.</li>
-          <li>Attend an interview with the school administrator.</li>
+           <li>Attend an interview with the school administrator.</li>
           <li>Receive your admission letter if successful.</li>
         </ol>
       </section>
@@ -73,7 +73,7 @@ export default function Admissions() {
                 key={event.id}
                 className="bg-gray-100 p-6 rounded-xl shadow hover:shadow-lg transition"
               >
-                <h3 className="text-xl font-semibold text-gray-800 mb-2">{event.title}</h3>
+                <h3 className="text-xl font-semibold text-gray-700 mb-2">{event.title}</h3>
                 <p className="text-gray-600 flex items-center gap-2 mb-1">
                   <FontAwesomeIcon icon={faCalendarAlt} className="text-red-400" />
                   {format(new Date(event.date), 'PPP')}
@@ -86,13 +86,13 @@ export default function Admissions() {
             ))}
           </div>
         ) : (
-          <p className="text-center text-gray-500">No upcoming events at the moment.</p>
+          <p className="text-center text-gray-600">No upcoming events at the moment.</p>
         )}
       </section>
 
       {/* CTA - Contact Admissions */}
       <section className="bg-white p-10 rounded-2xl text-center shadow">
-        <p className="text-lg text-gray-800 mb-4">Have questions or need help with enrollment?</p>
+        <p className="text-lg text-gray-700 mb-4">Have questions or need help with enrollment?</p>
         <NavLink
           to="/contact"
           className="inline-block bg-red-400 text-white font-medium px-6 py-3 rounded-full hover:bg-red-500 transition"

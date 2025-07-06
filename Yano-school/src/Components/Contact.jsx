@@ -168,7 +168,7 @@ export default function Contact() {
 
         {/* Map */}
         <div className="max-w-6xl mx-auto px-4 pb-16">
-            <h2 className="text-2xl font-bold text-gray-800 mb-4">Find Us on the Map</h2>
+            <h2 className="text-2xl font-bold text-gray-700 mb-4">Find Us on the Map</h2>
             <div className="rounded-xl overflow-hidden shadow-lg h-64 border">
                 <iframe
                 src="https://www.google.com/maps?q=6.689165,3.4672584&z=17&output=embed"
