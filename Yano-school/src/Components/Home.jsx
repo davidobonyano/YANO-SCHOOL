@@ -38,7 +38,7 @@ function Home() {
           </p>
           <div className="mt-6">
             <NavLink
-              to="/contact"
+              to="/admissions"
               className="bg-blue-900 hover:bg-blue-800 rounded-3xl px-6 py-3 text-white inline-block"
             >
               Enroll today <span className="inline-block ml-2">→</span>
