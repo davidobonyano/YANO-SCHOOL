@@ -74,7 +74,7 @@ function Rootlayout() {
       {/* Sidebar - Mobile and Tablet */}
       <div
         ref={sidebarRef}
-        className={`fixed top-0 right-0 h-full w-[70%] bg-white dark-sidebar z-50 p-6 transition-transform duration-300 ease-in-out lg:hidden ${
+        className={`fixed top-0 right-0 h-full w-[70%] bg-white dark-sidebar z-50 p-6 transition-transform duration-300 ease-in-out lg:hidden overflow-y-auto max-h-screen ${
           menuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >

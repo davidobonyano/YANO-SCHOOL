@@ -26,14 +26,14 @@ function Home() {
         <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px] z-10"></div>
 
         {/* Content over background */}
-        <div className="relative z-20 flex flex-col justify-center h-full text-white px-6 max-w-2xl">
+        <div className="relative z-20 flex flex-col justify-center h-full text-white px-6 max-w-2xl pt-[140px] landscape:pt-[150px] sm:pt-[120px]">
           <p className="text-red-400 uppercase tracking-widest font-bold text-sm">
             Choose The Best
           </p>
-          <h1 className="text-4xl md:text-6xl font-bold leading-tight mt-2">
+          <h1 className="text-3xl md:text-3xl font-bold leading-tight ">
             Education For Your Future
           </h1>
-          <p className="mt-4 text-gray-200 font-light text-lg md:text-xl">
+          <p className="mt-2 text-gray-200 font-light text-lg md:text-xl">
             At Yano School, we help every student discover their path in both academics and life.
           </p>
           <div className="mt-6">
