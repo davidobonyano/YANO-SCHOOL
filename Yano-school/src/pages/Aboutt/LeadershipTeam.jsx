@@ -17,15 +17,15 @@ const LeadershipTeam = () => {
       name: "Mr. Obonyano, AAT, ACA (ICAN)",
       role: "Proprietor & Chairman",
       icon: faUserTie,
-      photo: `${base}team/placeholders/teacher1.jpg`,
+      photo: `${base}team/placeholders/teacher1.avif`,
       bio: "A seasoned accounting professional overseeing school governance and strategic direction.",
-      funFact: "Enjoys chess and coffee.",
+      funFact: "Enjoys reading thought-provoking books.",
     },
     {
       name: "Mr. Oboh",
       role: "Headmaster – Ketu Campus",
       icon: faChalkboardTeacher,
-      photo: `${base}team/placeholders/teacher2.jpg`,
+      photo: `${base}team/placeholders/teacher2.avif`,
       bio: "Experienced in academic leadership with a passion for student discipline and growth.",
       funFact: "Plays chess competitively.",
     },
@@ -33,7 +33,7 @@ const LeadershipTeam = () => {
       name: "Mrs. Soetan",
       role: "Headmistress – Ikorodu Campus",
       icon: faChalkboardTeacher,
-      photo: `${base}team/placeholders/teacher3.jpg`,
+      photo: `${base}team/placeholders/teacher3.webp`,
       bio: "Dedicated to fostering a nurturing academic environment with high standards.",
       funFact: "Loves gardening on weekends.",
     },
@@ -41,7 +41,7 @@ const LeadershipTeam = () => {
       name: "Mr. Adeyemi",
       role: "Senior Teacher (Math & ICT)",
       icon: faUserGraduate,
-      photo: `${base}team/placeholders/teacher4.jpg`,
+      photo: `${base}team/placeholders/teacher4.avif`,
       bio: "Manages class schedules, results, and teaches core STEM subjects.",
       funFact: "Loves coding and jazz.",
     },
@@ -49,7 +49,7 @@ const LeadershipTeam = () => {
       name: "Mrs. Chukwu",
       role: "English Teacher & Admissions",
       icon: faUserGraduate,
-      photo: `${base}team/placeholders/teacher2.jpg`,
+      photo: `${base}team/placeholders/teacher3.webp`,
       bio: "Handles school admissions and excels at literature and essay coaching.",
       funFact: "Writes poetry in her spare time.",
     },
@@ -57,23 +57,23 @@ const LeadershipTeam = () => {
       name: "Mr. Lawal",
       role: "Security Officer",
       icon: faShieldAlt,
-      photo: `${base}team/placeholders/teacher1.jpg`,
+      photo: `${base}team/placeholders/teacher5.avif`,
       bio: "Responsible for maintaining a safe and secure school environment.",
       funFact: "Former amateur boxer.",
     },
     {
       name: "Mrs. Fatima",
-      role: "Cleaner & Facility Staff",
+      role: "Facility Staff",
       icon: faBroom,
-      photo: `${base}team/placeholders/teacher3.jpg`,
+      photo: `${base}team/placeholders/teacher6.webp`,
       bio: "Ensures our environment is clean, welcoming, and sanitized daily.",
       funFact: "Enjoys painting landscapes.",
     },
   ];
 
   return (
-    <section className="py-16 px-4 bg-gray-50 dark:bg-gray-900">
-      <h2 className="text-center text-3xl font-bold text-gray-800 dark:text-gray-100 mb-12">
+    <section className="py-16 px-4 bg-gray-100 ">
+      <h2 className="text-center text-3xl font-bold text-gray-700  mb-12">
         Leadership & Team
       </h2>
 
@@ -90,8 +90,7 @@ const TeamCard = ({ name, role, icon, photo, bio, funFact }) => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-2xl shadow hover:shadow-xl transition duration-300 overflow-hidden">
-      {/* Full-width Image */}
+    <div className="bg-white rounded-2xl shadow hover:shadow-xl transition duration-300 overflow-hidden">
       <div className="w-full h-64">
         <img
           src={photo}
@@ -101,10 +100,9 @@ const TeamCard = ({ name, role, icon, photo, bio, funFact }) => {
         />
       </div>
 
-      {/* Card Content */}
       <div className="p-5 flex flex-col items-center text-center">
         <FontAwesomeIcon icon={icon} className="text-red-400 text-xl mb-2" />
-        <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-100">
+        <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-100">
           {name}
         </h3>
         <p className="italic text-sm text-gray-600 dark:text-gray-300 mb-2">
