@@ -16,7 +16,7 @@ function Programs() {
   return (
     <div className="Programs">
       {/* Hero Section */}
-      <section
+      <section 
         className="relative w-full h-[80vh] md:h-[85vh] overflow-hidden"
         style={{
           backgroundImage: `url(${programsHero})`,
@@ -107,7 +107,7 @@ function Programs() {
        </section>
 
         {/* Lagos State Academic Calendar */}
-        <section>
+        <section id="school-calendar">
           <SchoolCalendar />
         </section>
 

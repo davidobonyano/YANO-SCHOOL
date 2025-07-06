@@ -6,25 +6,21 @@ import {
   faInstagram,
   faYoutube,
 } from '@fortawesome/free-brands-svg-icons';
-import { NavLink } from 'react-router-dom' // Importing Yano School logo
 import YanoLogo from '../assets/yano logo.png'; // Adjust the path as necessary
 
 const Footer = () => {
   return (
     <footer className=" bg-gray-100 text-gray-700">
-
-   
       <div className="max-w-6xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-2 gap-8">
-
         {/* Logo & About */}
         <div>
-           <NavLink to="/">
-                       <img
-                         src={YanoLogo}
-                         alt="Yano School Logo"
-                         className="h-16 w-auto object-contain"
-                       />
-                     </NavLink>
+          <a href="/">
+            <img
+              src={YanoLogo}
+              alt="Yano School Logo"
+              className="h-16 w-auto object-contain"
+            />
+          </a>
           <p className="text-sm">
             Nurturing future leaders through education, values, and opportunity.
           </p>
@@ -33,49 +29,34 @@ const Footer = () => {
         {/* Secondary Navigation */}
         <div>
           <h4 className="text-red-400 font-semibold mb-4">Explore</h4>
-         <ul className="space-y-2 text-sm">
-  <li>
-    <NavLink
-      to="/programs"
-      className="hover:text-red-500 transition"
-    >
-      Clubs & Activities
-    </NavLink>
-  </li>
-  <li>
-    <NavLink
-      to="/programs"
-      className="hover:text-red-500 transition"
-    >
-      School Calendar
-    </NavLink>
-  </li>
-  <li>
-    <NavLink
-      to="/about"
-      className="hover:text-red-500 transition"
-    >
-      Uniform Guidelines
-    </NavLink>
-  </li>
-  <li>
-    <NavLink
-      to="/programs"
-      className="hover:text-red-500 transition"
-    >
-      Holiday Schedule
-    </NavLink>
-  </li>
-</ul>
-
+          <ul className="space-y-2 text-sm">
+            <li>
+              <a href="/programs" className="hover:text-red-500 transition">
+                Clubs & Activities
+              </a>
+            </li>
+            <li>
+              <a href="/programs#school-calendar" className="hover:text-red-500 transition">
+                School Calendar
+              </a>
+            </li>
+            <li>
+              <a href="/about" className="hover:text-red-500 transition">
+                Uniform Guidelines
+              </a>
+            </li>
+            <li>
+              <a href="/programs#holiday-schedule" className="hover:text-red-500 transition">
+                Holiday Schedule
+              </a>
+            </li>
+          </ul>
         </div>
-
       </div>
 
       {/* CTA Section: Newsletter + Socials */}
       <div className="border-t border-gray-300 py-6">
         <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
-
           {/* Newsletter Form */}
           <form className="flex flex-col sm:flex-row items-center w-full md:w-auto gap-3">
             <input
@@ -106,7 +87,6 @@ const Footer = () => {
               <FontAwesomeIcon icon={faYoutube} />
             </a>
           </div>
-
         </div>
       </div>
 
@@ -114,7 +94,6 @@ const Footer = () => {
       <div className="text-center text-xs text-gray-500 py-4 border-t border-gray-200">
         &copy; {new Date().getFullYear()} Yano School. All rights reserved.
       </div>
-
     </footer>
   );
 };

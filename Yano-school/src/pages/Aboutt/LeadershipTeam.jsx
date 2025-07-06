@@ -102,10 +102,10 @@ const TeamCard = ({ name, role, icon, photo, bio, funFact }) => {
 
       <div className="p-5 flex flex-col items-center text-center">
         <FontAwesomeIcon icon={icon} className="text-red-400 text-xl mb-2" />
-        <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-100">
+        <h3 className="text-lg font-semibold text-gray-700">
           {name}
         </h3>
-        <p className="italic text-sm text-gray-600 dark:text-gray-300 mb-2">
+        <p className="italic text-sm text-gray-600 mb-2">
           {role}
         </p>
 
