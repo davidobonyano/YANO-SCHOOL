@@ -56,7 +56,7 @@ function Rootlayout() {
         <button
           onClick={scrollToTop}
           className={`fixed bottom-4 left-4 z-50 p-3 rounded-full shadow-md transition-colors duration-300 ${
-            darkMode ? "bg-white text-black" : "bg-blue-700 text-white"
+            darkMode ? "bg-white text-black" : "bg-blue-900 text-white"
           } hover:scale-110`}
           aria-label="Back to top"
         >
@@ -101,7 +101,7 @@ function Rootlayout() {
             >
               <FontAwesomeIcon icon={icon} />
               <span>{label}</span>
-            </NavLink>
+            </NavLink> 
           ))}
         </nav>
 
@@ -153,7 +153,7 @@ function Rootlayout() {
         <nav className={`z-30 hidden lg:flex items-center px-6 ${
           isHomePage
             ? "absolute lg:top-13 left-1/2 transform -translate-x-1/2 w-[80%] bg-white text-blue-900 rounded-xl shadow-md  justify-between"
-            : "bg-lightmode-header dark:bg-darkmode-header shadow-md py-4 justify-between"
+            : "bg-lightmode-header  shadow-md py-4 justify-between"
         }`} >
         
           <NavLink to="/">
@@ -215,7 +215,7 @@ function Rootlayout() {
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle Menu"
             className={`text-xl ${
-              isHomePage ? "text-blue-900" : darkMode ? "text-white" : "text-gray-800"
+              isHomePage ? "text-blue-900" : darkMode ? "text-white" : "text-gray-700"
             }`}
           >
             <FontAwesomeIcon icon={faBars} />
