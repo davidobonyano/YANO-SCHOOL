@@ -1,7 +1,7 @@
 {
   "name": "yano-school",
   "description": "A React application for Yano School",
-  "author": "David efe <godsentryan@gmail.com>",
+  "author": "David Efe <godsentryan@gmail.com>",
   "private": true,
   "version": "0.0.0",
   "type": "module",
